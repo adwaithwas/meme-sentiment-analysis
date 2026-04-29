@@ -1,0 +1,26 @@
+# Environments
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Kaggle and Dataset
+.kaggle/
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Checkpoints and logs
+checkpoints/*
+!checkpoints/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+
+# Flask uploads
+webapp/uploads/*
+!webapp/uploads/.gitkeep

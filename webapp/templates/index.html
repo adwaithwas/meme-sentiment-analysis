@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI-powered meme sentiment analysis — detect sentiment, humor, and sarcasm in Hinglish memes using deep learning.">
+    <title>Meme Sentiment Analyzer | AI-Powered Analysis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <!-- Animated background particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🎭</span>
+                <h1>Meme Analyzer</h1>
+            </div>
+            <p class="subtitle">AI-powered sentiment, humor & sarcasm detection for Hinglish memes</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card glass-card">
+                    <div class="upload-zone" id="dropZone">
+                        <div class="upload-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                        </div>
+                        <p class="upload-text">Drop your meme here or <span class="upload-browse">browse</span></p>
+                        <p class="upload-hint">Supports JPG, PNG, GIF, WebP (max 16MB)</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div class="preview-container" id="previewContainer" style="display:none;">
+                        <img id="previewImage" src="" alt="Meme preview">
+                        <button class="remove-btn" id="removeBtn" title="Remove image">✕</button>
+                    </div>
+
+                    <!-- Text Input -->
+                    <div class="text-input-section">
+                        <label for="textInput" class="text-label">Or enter meme text manually:</label>
+                        <textarea id="textInput" placeholder="Type or paste Hinglish meme text here..."
+                            rows="3"></textarea>
+                    </div>
+
+                    <!-- Analyze Button -->
+                    <button class="analyze-btn" id="analyzeBtn" disabled>
+                        <span class="btn-text">Analyze Meme</span>
+                        <span class="btn-loader" style="display:none;">
+                            <div class="spinner"></div>
+                            Analyzing...
+                        </span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display:none;">
+                <h2 class="results-title">Analysis Results</h2>
+
+                <div class="results-grid">
+                    <!-- Sentiment Card -->
+                    <div class="result-card glass-card" id="sentimentCard">
+                        <div class="card-header">
+                            <span class="card-icon">💭</span>
+                            <h3>Sentiment</h3>
+                        </div>
+                        <div class="prediction-badge" id="sentimentBadge">—</div>
+                        <div class="confidence-bars" id="sentimentBars"></div>
+                    </div>
+
+                    <!-- Humor Card -->
+                    <div class="result-card glass-card" id="humorCard">
+                        <div class="card-header">
+                            <span class="card-icon">😂</span>
+                            <h3>Humor</h3>
+                        </div>
+                        <div class="prediction-badge" id="humorBadge">—</div>
+                        <div class="confidence-bars" id="humorBars"></div>
+                    </div>
+
+                    <!-- Sarcasm Card -->
+                    <div class="result-card glass-card" id="sarcasmCard">
+                        <div class="card-header">
+                            <span class="card-icon">🤨</span>
+                            <h3>Sarcasm</h3>
+                        </div>
+                        <div class="prediction-badge" id="sarcasmBadge">—</div>
+                        <div class="confidence-bars" id="sarcasmBars"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Display -->
+            <div class="error-toast" id="errorToast" style="display:none;">
+                <span class="error-icon">⚠</span>
+                <span id="errorMessage"></span>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Built with XLM-RoBERTa + ResNet50 | Cross-Attention Fusion | Multi-Task Learning</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
