@@ -274,6 +274,53 @@ body {
     transform: scale(1.1);
 }
 
+/* --- Success Tick --- */
+.success-tick {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-green);
+    color: var(--bg-primary);
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 214, 143, 0.4);
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+#imageTick {
+    bottom: 16px;
+    right: 16px;
+    width: 48px;
+    height: 48px;
+}
+
+#textTick {
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+}
+#textTick svg {
+    width: 16px;
+    height: 16px;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    80% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+#textTick {
+    animation: popInText 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes popInText {
+    0% { transform: translateY(-50%) scale(0); opacity: 0; }
+    80% { transform: translateY(-50%) scale(1.1); opacity: 1; }
+    100% { transform: translateY(-50%) scale(1); opacity: 1; }
+}
+
 /* --- Text Input --- */
 .text-input-section {
     margin-top: 24px;

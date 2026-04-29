@@ -48,14 +48,26 @@
                     <!-- Image Preview -->
                     <div class="preview-container" id="previewContainer" style="display:none;">
                         <img id="previewImage" src="" alt="Meme preview">
+                        <div class="success-tick" id="imageTick" style="display:none;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
                         <button class="remove-btn" id="removeBtn" title="Remove image">✕</button>
                     </div>
 
                     <!-- Text Input -->
                     <div class="text-input-section">
                         <label for="textInput" class="text-label">Or enter meme text manually:</label>
-                        <textarea id="textInput" placeholder="Type or paste Hinglish meme text here..."
-                            rows="3"></textarea>
+                        <div style="position: relative;">
+                            <textarea id="textInput" placeholder="Type or paste Hinglish meme text here..."
+                                rows="3"></textarea>
+                            <div class="success-tick text-tick" id="textTick" style="display:none;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Analyze Button -->

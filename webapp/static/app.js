@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultsSection = document.getElementById('resultsSection');
     const errorToast = document.getElementById('errorToast');
     const errorMessage = document.getElementById('errorMessage');
+    const imageTick = document.getElementById('imageTick');
+    const textTick = document.getElementById('textTick');
 
     let selectedFile = null;
 
@@ -58,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         selectedFile = file;
+        if (imageTick) imageTick.style.display = 'none';
+        if (textTick) textTick.style.display = 'none';
 
         // Show preview
         const reader = new FileReader();
@@ -75,12 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedFile = null;
         fileInput.value = '';
         previewContainer.style.display = 'none';
+        if (imageTick) imageTick.style.display = 'none';
         dropZone.style.display = 'block';
         updateButtonState();
     });
 
     // Enable button when file or text is available
-    textInput.addEventListener('input', updateButtonState);
+    textInput.addEventListener('input', () => {
+        if (textTick) textTick.style.display = 'none';
+        if (imageTick) imageTick.style.display = 'none';
+        updateButtonState();
+    });
 
     function updateButtonState() {
         analyzeBtn.disabled = !(selectedFile || textInput.value.trim());
@@ -116,6 +125,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 showError(data.error);
             } else if (data.success) {
                 displayResults(data.results);
+                if (selectedFile && imageTick) {
+                    // reset animation
+                    imageTick.style.animation = 'none';
+                    imageTick.offsetHeight; /* trigger reflow */
+                    imageTick.style.animation = null;
+                    imageTick.style.display = 'flex';
+                }
+                if (textInput.value.trim() && textTick) {
+                    textTick.style.animation = 'none';
+                    textTick.offsetHeight; /* trigger reflow */
+                    textTick.style.animation = null;
+                    textTick.style.display = 'flex';
+                }
             }
         } catch (err) {
             showError('Connection error. Is the server running?');
