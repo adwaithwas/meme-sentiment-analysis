@@ -1,5 +1,7 @@
 # 🎭 Multimodal Meme Sentiment Analysis
 
+[![Hugging Face Model](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue)](https://huggingface.co/adwaithwas/meme-sentiment-analysis)
+
 A deep learning system for analyzing memes — predicting **sentiment**, **humor type**, and **sarcasm** using multimodal fusion of text (XLM-RoBERTa) and images (ResNet50) with cross-attention.
 
 ## 🏗️ Architecture
@@ -34,7 +36,13 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txt
 ```
 
-### 2. Download Dataset
+### 2. Download Model Weights
+Due to file size limits, the trained model weights are hosted on Hugging Face.
+1. Download `best_model.pt` from [Hugging Face](https://huggingface.co/adwaithwas/meme-sentiment-analysis/resolve/main/best_model.pt).
+2. Create a `checkpoints/` folder in the project root.
+3. Place the file inside: `checkpoints/best_model.pt`.
+
+### 3. Download Dataset (Optional)
 ```bash
 python train.py --download --phase 3
 ```
